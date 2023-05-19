@@ -26,9 +26,12 @@ if(isset($_POST['btn_guardar'])){
     $guardar = mysqli_query(
       $conectar, 
       "INSERT INTO estudiantes (Fecha_Ingreso, Tipo_documento, Documento, Nombres, Apellidos, Edad, Correo, Telefono, Id_Materia, Nombre_Materia) 
-      VALUES ('$Fecha_ingreso', '$Tipo_documento', '$Tipo_documento', '$Nombres', '$Apellidos', '$Edad', '$Correo', '$Telefono', '$Id_Materia', '$Nombre_Materia')");
+      VALUES ('$Fecha_ingreso', '$Tipo_documento', '$Documento', '$Nombres', '$Apellidos', '$Edad', '$Correo', '$Telefono', '$Id_Materia', '$Nombre_Materia')");
+
+    echo "<script> Swal.fire('Registro Exitoso')</script>";
   }
-	echo "<script> Swal.fire('Registro Exitoso')</script>";
+
+	
 	
 }
 ?>

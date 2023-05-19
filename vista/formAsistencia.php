@@ -1,13 +1,13 @@
 <?php
-//Iniciamos la DB
-include_once '../modelo/filtrar.php';
-$objeto = new Conexion();
-$conexion = $objeto->Conectar();
+  //Iniciamos la DB
+  include_once '../modelo/filtrar.php';
+  $objeto = new Conexion();
+  $conexion = $objeto->Conectar();
 
-$consulta = "SELECT * FROM asignaturas";
-$resultado = $conexion->prepare($consulta);
-$resultado->execute();
-$usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+  $consulta = "SELECT * FROM asignaturas";
+  $resultado = $conexion->prepare($consulta);
+  $resultado->execute();
+  $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!Doctype html>
@@ -34,16 +34,16 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active  text-white" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active  text-white" aria-current="page" href="index.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white"  href="listado.php">Listado</a>
+            <a class="nav-link  text-white"  href="listados.php">Listado</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link  text-white" href="fasistencia.php">Registrar</a>
+            <a class="nav-link  text-white" href="formAsistencia.php">Registrar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="fconsulta.php">Consultar</a>
+            <a class="nav-link text-white" href="consultar.php">Consultar</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -78,7 +78,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                   <br>
 
                   <label>Numero Documento</label>
-                  <input type="number" name="documento" placeholder="Numero Documento" class="form-control"><br>
+                  <input type="varchar" name="documento" placeholder="Numero Documento" class="form-control"><br>
                   <label>Nombre Usuario</label>
                   <input type="text" name="nombres" placeholder="Nombres Usuario" class="form-control"><br>
                   <label>Apellidos Usuario</label>
@@ -258,7 +258,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <!-- Copyright -->
     <div class="text-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.05);">
       © 2021 Copyright:
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">TeloHago.com</a>
+      <a class="text-reset fw-bold" href="#">Yecid Leyes || Software Development</a>
     </div>
     <!-- Copyright -->
   </footer>

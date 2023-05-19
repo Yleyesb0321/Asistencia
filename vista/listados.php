@@ -1,13 +1,13 @@
 <?php
-include_once '../modelo/filtrar.php';
-$objeto = new Conexion();
-$conexion = $objeto->Conectar();
+  include_once '../modelo/filtrar.php';
+  $objeto = new Conexion();
+  $conexion = $objeto->Conectar();
 
 
-$consulta = "SELECT * FROM estudiante";
-$resultado = $conexion->prepare($consulta);
-$resultado->execute();
-$usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+  $consulta = "SELECT * FROM estudiantes";
+  $resultado = $conexion->prepare($consulta);
+  $resultado->execute();
+  $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!Doctype html>
@@ -30,99 +30,98 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 	
 	</head>
 <body>
-<nav class="navbar navbar-expand-lg bg-danger">
-  <div class="container-fluid">
-   <img src="../img/logo.png" width="5%">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active  text-white" aria-current="page" href="#">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link  text-white"  href="listado.php">Listado</a>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link  text-white" href="fasistencia.php">Registrar</a>
-         
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="fconsulta.php">Consultar</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-dark text-white" type="submit">Buscar</button>
-      </form>
+  <nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <img src="../img/logo.png" width="5%">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active  text-white" aria-current="page" href="index.php">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white"  href="listados.php">Listado</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link  text-white" href="formAsistencia.php">Registrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="consultar.php">Consultar</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-primary text-white" type="submit">Buscar</button>
+        </form>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 	<br><br>
 	<div class="container">
-	<h1 class="text-center text-dark">Listado de Registrados</h1><br>
-		<br><center>
+    <h1 class="text-center text-dark">Listado de Registrados</h1><br><br>
+
 		<table id="tablaUsuarios" class="table-striped table-success" style="width: 100%">
 			<thead>
-				<tr>
-		<th scope="col">Item</th>	
-		<th scope="col">Fecha Ingreso</th>		
-		<th scope="col">Tipo Documento</th>	
-		<th scope="col">Numero Documento</th>		
-		<th scope="col">Nombres</th>		
-		<th scope="col">Apellidos</th>		
-		<th scope="col">Edad</th>		
-		<th scope="col"><center>Correos	</center></th>	
-		<th scope="col">Telefono</th>		
-		<th scope="col">Id Programa</th>		
-		<th scope="col">Nombre Programa</th>	
-					<th scope="col">Editar</th>	
-					<th scope="col">Eliminar</th>	
-		</tr>
-			</thead>
-	    <tbody>
-		<!------- Logica para filtrar datos de la tabla estudiante	--->
-			<?php
-			foreach($usuarios as $filtro){
-			?>
-			<tr>
-				<td><?php echo $filtro['Id']?></td>
-				<td><?php echo $filtro['FechaIngreso']?></td>
-				<td><?php echo $filtro['TipoDocumento']?></td>
-				<td><?php echo $filtro['Documento']?></td>
-				<td><?php echo $filtro['Nombres']?></td>
-				<td><?php echo $filtro['Apellidos']?></td>
-				<td><?php echo $filtro['Edad']?></td>
-				<td><?php echo $filtro['Correo']?></td>
-			    <td><?php echo $filtro['Telefono']?></td>
-			    <td><?php echo $filtro['Id_Materia']?></td>
-			    <td><?php echo $filtro['NombreMateria']?></td>
-	<td><button type="button" class="btn btn-success editbtn" data-bg-toogle="modal" data-bg-target="#editar"><i class="fa-solid fa-file-pen"></i></button></td>
-		<td><button type="button" class="btn btn-danger deletebtn" data-bg-toogle="modal" data-bg-target="#eliminar"><i class="fa-solid fa-trash-can"></i></button></td>
-			
-			</td>
-			</tr>
-			<?php
-			}
-			?>
-		</tbody>	
+        <tr>
+          <th scope="col">Item</th>	
+          <th scope="col">Fecha Ingreso</th>		
+          <th scope="col">Tipo Documento</th>	
+          <th scope="col">Numero Documento</th>		
+          <th scope="col">Nombres</th>		
+          <th scope="col">Apellidos</th>		
+          <th scope="col">Edad</th>		
+          <th scope="col"><center>Correos	</center></th>	
+          <th scope="col">Telefono</th>		
+          <th scope="col">Id Programa</th>		
+          <th scope="col">Nombre Programa</th>	
+          <th scope="col">Editar</th>	
+          <th scope="col">Eliminar</th>	
+        </tr>
+      </thead>
+      <tbody>
+      <!-- Logica para filtrar datos de la tabla estudiante	-->
+        <?php
+        foreach($usuarios as $filtro){
+        ?>
+        <tr>
+          <td><?php echo $filtro['Id']?></td>
+          <td><?php echo $filtro['FechaIngreso']?></td>
+          <td><?php echo $filtro['TipoDocumento']?></td>
+          <td><?php echo $filtro['Documento']?></td>
+          <td><?php echo $filtro['Nombres']?></td>
+          <td><?php echo $filtro['Apellidos']?></td>
+          <td><?php echo $filtro['Edad']?></td>
+          <td><?php echo $filtro['Correo']?></td>
+          <td><?php echo $filtro['Telefono']?></td>
+          <td><?php echo $filtro['Id_Materia']?></td>
+          <td><?php echo $filtro['NombreMateria']?></td>
+
+          <!--Boton Editar-->
+          <td>
+            <button type="button" class="btn btn-success editbtn" data-bg-toogle="modal" data-bg-target="#editar"><i class="fa-solid fa-file-pen"></i>
+            </button>
+          </td>
+
+          <!--Boton Eliminar-->
+          <td>
+            <button type="button" class="btn btn-danger deletebtn" data-bg-toogle="modal" data-bg-target="#eliminar"><i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+
+        </tr>
+        <?php
+        }
+        ?>
+      </tbody>	
 		</table>
-		</center>
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	</div>
-<br><br>
-	<!-- Footer -->
-<footer class="text-center text-lg-start bg-dark text-muted">
+  <br><br>
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-dark text-muted">
   <!-- Section: Social media -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <!-- Left -->
@@ -238,13 +237,11 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
   <!-- Copyright -->
   <div class="text-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2021 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    <a class="text-reset fw-bold" href="#">Yecid Leyes || Software Development</a>
   </div>
   <!-- Copyright -->
-</footer>
-<!-- Footer -->
-
-
+  </footer>
+  <!-- Footer -->
 
 </body>
 </html>

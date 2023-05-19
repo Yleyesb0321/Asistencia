@@ -16,20 +16,20 @@
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
       <img src="../img/logo.png" width="5%">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active  text-white" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active  text-white" aria-current="page" href="index.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white"  href="listado.php">Listado</a>
+            <a class="nav-link  text-white"  href="listados.php">Listado</a>
           </li>
           <li class="nav-item dropdown">
-              <a class="nav-link  text-white" href="formAsistencia.php">Registrar</a>
-            
+            <a class="nav-link  text-white" href="formAsistencia.php">Registrar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="consultar.php">Consultar</a>
@@ -37,7 +37,7 @@
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-dark text-white" type="submit">Buscar</button>
+          <button class="btn btn-outline-primary text-white" type="submit">Buscar</button>
         </form>
       </div>
     </div>
@@ -47,87 +47,148 @@
     <h2 class="display-6 text-danger">Consulta de Registrados</h2>
     <form action="" method="post">	
       <table>
-      <tr>
-      <td><label>Señor Usuario Digite su numero documento para Consultar su registro</label><br><br>
-        <input type="text" name="ConsultaDocumento" class="form-control" style="width: 100%">
-        </td>
-      </tr><br>
-      <td colspan="2"><br>
-      <center>
-        <input type="submit" name="btn_consultar" value="Consultar" class="btn btn-dark">
-      </center></td>
-        
-      </tr>
+        <tr>
+          <td>
+            <label>Señor Usuario Digite su numero documento para Consultar su registro</label><br><br>
+            <input type="text" name="ConsultaDocumento" class="form-control" style="width: 100%">
+          </td>
+          <br>
+          <td colspan="2"><br>
+            <input type="submit" name="btn_consultar" value="Consultar" class="btn btn-dark">
+          </td>
+        </tr>
       </table>
-    <td colspan="2"></td>
-    <br>
-    </center>
-
-<!-----Modulo de Consulta ---->
-  <?php
-  include_once("../modelo/conexionadd.php");
-  if(isset($_POST['btn_consultar']))
-  {
-    $documento = $_POST['ConsultaDocumento'];
-    $existe = 0;
+      <td colspan="2"></td>
+      <br>
     
-    if($documento=="")
-    {
-      echo "<script> Swal.fire('<h4>Señor Usuario Digite numero documento para su consulta</h4>')</script>";
-    }
-    
-    else{
-      $resultado = mysqli_query($conectar, "SELECT * FROM estudiante WHERE Documento = '$documento'");
+      <!-- Modulo Consultas -->
+      <?php 
+        include("../controlador/consultas.php"); 
+      ?>
       
-    
-      while($consulta = mysqli_fetch_array($resultado))
-      {
-        echo "
-        <center><table width=\"80%\border\"1\">
-        <tr>
-        <td><center><b>Fecha y Hora </b></center></td>
-        <td><center><b>Tipo Documento </b></center></td>
-        <td><center><b>Numero Documento </b></center></td>
-        <td><center><b>Nombres </b></center></td>
-        <td><center><b>Apellidos </b></center></td>
-        <td><center><b>Edad </b></center></td>
-        <td><center><b>Correo </b></center></td>
-        <td><center><b>Movil </b></center></td>
-        <td><center><b>Id Materia </b></center></td>
-        <td><center><b>Nombre Materia </b></center></td>
-        </tr>
-        <tr>
-        <td><center>".$consulta['FechaIngreso']."</center></td>
-        <td><center>".$consulta['TipoDocumento']."</center></td>
-        <td><center>".$consulta['Documento']."</center></td>
-        <td><center>".$consulta['Nombres']."</center></td>
-        <td><center>".$consulta['Apellidos']."</center></td>
-        <td><center>".$consulta['Edad']."</center></td>
-        <td><center>".$consulta['Correo']."</center></td>
-        <td><center>".$consulta['Telefono']."</center></td>
-        <td><center>".$consulta['Id_Materia']."</center></td>
-        <td><center>".$consulta['NombreMateria']."</center></td>
-        </tr>
-        </table>
-        </center>";
-        
-        $existe++;
-        }
-        
-        if($existe==0){
-          
-          echo "<script> Swal.fire('<h4>Numero Digitalizado no existe en nuestra base de datos</h4>')</script>";
-          
-        }		
-      
-    }
-  }
-  
-  
-  ?>
-  
-  </form>
+    </form>
   </div>
+  <!-- Footer -->
+  <footer class="text-center text-white bg-dark">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
 
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>Company name
+            </h6>
+            <p>
+              Here you can use rows and columns to organize your footer content. Lorem ipsum
+              dolor sit amet, consectetur adipisicing elit.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Products
+            </h6>
+            <p>
+              <a href="#!" class="text-white">Angular</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">React</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Vue</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Laravel</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="#!" class="text-white">Pricing</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Settings</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Orders</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              info@example.com
+            </p>
+            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2021 Copyright:
+      <a class="text-reset fw-bold" href="#">Yecid Leyes || Software Development</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
 </body>
 </html>
