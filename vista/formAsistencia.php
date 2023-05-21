@@ -22,6 +22,10 @@
 	
 	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <!--Iconos de Redes Sociales-->
+	<link rel="stylesheet" href="https://kit.fontawesome.com/dcb1bbced2.css" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/dcb1bbced2.js" crossorigin="anonymous"></script>
 	
 	</head>
 <body>
@@ -34,7 +38,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active  text-white" aria-current="page" href="index.php">Inicio</a>
+            <a class="nav-link active  text-white" aria-current="page" href="../index.php">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link  text-white"  href="listados.php">Listado</a>
@@ -128,7 +132,7 @@
             
             <!---- Contronlador de Registrar --->
             <?php
-              include("../controlador/registrar.php");
+              include '../controlador/registrar.php';
             ?>
 
         </form>
@@ -258,7 +262,7 @@
     <!-- Copyright -->
     <div class="text-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.05);">
       © 2021 Copyright:
-      <a class="text-reset fw-bold" href="#">Yecid Leyes || Software Development</a>
+      <a class="text-reset fw-bold" href="#"> Yecid Leyes || Software Development 🎯 </a>
     </div>
     <!-- Copyright -->
   </footer>

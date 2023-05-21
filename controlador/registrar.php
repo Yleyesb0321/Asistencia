@@ -1,11 +1,7 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$clave = "";
-$bd = "asistencia";
+include '../modelo/conexion.php';
 
-$conectar = new Mysqli($host, $user, $clave, $bd);
 
 if(isset($_POST['btn_guardar'])){
   $Fecha_ingreso = $_POST['fecha'];

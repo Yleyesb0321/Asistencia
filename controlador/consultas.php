@@ -7,7 +7,7 @@
     $existe = 0;
     
     if($documento==""){
-      echo "<script> Swal.fire('<h4>Señor Usuario Digite numero documento para su consulta</h4>')</script>";
+      echo "<script> Swal.fire('<h4>Señor Usuario, Digite un número de documento para la consulta</h4>')</script>";
     }
     
     else{
@@ -17,9 +17,9 @@
         
           echo "
             <center>
-              <table width=\"80%\border\"1\">
+              <table width=\"70%\border\"1\">
                 <tr>
-                  <td><center><b>Fecha y Hora </b></center></td>
+                  <td><b>Fecha y Hora </b></td>
                   <td><center><b>Tipo Documento </b></center></td>
                   <td><center><b>Numero Documento </b></center></td>
                   <td><center><b>Nombres </b></center></td>
@@ -30,8 +30,8 @@
                   <td><center><b>Id_Materia </b></center></td>
                   <td><center><b>Nombre_Materia </b></center></td>
                 </tr>
-                <tr>
-                  <td><center>".$consulta['Fecha_Ingreso']."</center></td>
+                <tr style='border: 1px solid blue';>
+                  <td><center>".$consulta['Fecha_ingreso']."</center></td>
                   <td><center>".$consulta['Tipo_documento']."</center></td>
                   <td><center>".$consulta['Documento']."</center></td>
                   <td><center>".$consulta['Nombres']."</center></td>

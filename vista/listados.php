@@ -26,6 +26,8 @@
 	
 	<!---- Iconos de los botones bonito --->
 	<script src="https://kit.fontawesome.com/dcb1bbced2.js" crossorigin="anonymous"></script>
+
+  <!--Iconos de Redes Sociales-->
 	<link rel="stylesheet" href="https://kit.fontawesome.com/dcb1bbced2.css" crossorigin="anonymous">
 	
 	</head>
@@ -39,7 +41,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active  text-white" aria-current="page" href="index.php">Inicio</a>
+            <a class="nav-link active  text-white" aria-current="page" href="../index.php">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link  text-white"  href="listados.php">Listado</a>
@@ -72,7 +74,7 @@
           <th scope="col">Nombres</th>		
           <th scope="col">Apellidos</th>		
           <th scope="col">Edad</th>		
-          <th scope="col"><center>Correos	</center></th>	
+          <th scope="col">Correos</th>	
           <th scope="col">Telefono</th>		
           <th scope="col">Id Programa</th>		
           <th scope="col">Nombre Programa</th>	
@@ -86,9 +88,9 @@
         foreach($usuarios as $filtro){
         ?>
         <tr>
-          <td><?php echo $filtro['Id']?></td>
-          <td><?php echo $filtro['FechaIngreso']?></td>
-          <td><?php echo $filtro['TipoDocumento']?></td>
+          <td><?php echo $filtro['Id_estudiante']?></td>
+          <td><?php echo $filtro['Fecha_ingreso']?></td>
+          <td><?php echo $filtro['Tipo_documento']?></td>
           <td><?php echo $filtro['Documento']?></td>
           <td><?php echo $filtro['Nombres']?></td>
           <td><?php echo $filtro['Apellidos']?></td>
@@ -96,7 +98,7 @@
           <td><?php echo $filtro['Correo']?></td>
           <td><?php echo $filtro['Telefono']?></td>
           <td><?php echo $filtro['Id_Materia']?></td>
-          <td><?php echo $filtro['NombreMateria']?></td>
+          <td><?php echo $filtro['Nombre_Materia']?></td>
 
           <!--Boton Editar-->
           <td>
@@ -121,125 +123,125 @@
 	</div>
   <br><br>
   <!-- Footer -->
-  <footer class="text-center text-lg-start bg-dark text-muted">
-  <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-    <!-- Left -->
-    <div class="me-5 d-none d-lg-block">
-      <span>Get connected with us on social networks:</span>
-    </div>
-    <!-- Left -->
-
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </section>
-  <!-- Section: Social media -->
-
-  <!-- Section: Links  -->
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
-          </h6>
-          <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Products
-          </h6>
-          <p>
-            <a href="#!" class="text-white">Angular</a>
-          </p>
-          <p>
-            <a href="#!" class="text-white">React</a>
-          </p>
-          <p>
-            <a href="#!" class="text-white">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-white">Laravel</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Useful links
-          </h6>
-          <p>
-            <a href="#!" class="text-white">Pricing</a>
-          </p>
-          <p>
-            <a href="#!" class="text-white">Settings</a>
-          </p>
-          <p>
-            <a href="#!" class="text-white">Orders</a>
-          </p>
-          <p>
-            <a href="#!" class="text-white">Help</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            info@example.com
-          </p>
-          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-        </div>
-        <!-- Grid column -->
+  <footer class="text-center text-white bg-dark">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
       </div>
-      <!-- Grid row -->
-    </div>
-  </section>
-  <!-- Section: Links  -->
+      <!-- Left -->
 
-  <!-- Copyright -->
-  <div class="text-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold" href="#">Yecid Leyes || Software Development</a>
-  </div>
-  <!-- Copyright -->
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>Company name
+            </h6>
+            <p>
+              Here you can use rows and columns to organize your footer content. Lorem ipsum
+              dolor sit amet, consectetur adipisicing elit.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Products
+            </h6>
+            <p>
+              <a href="#!" class="text-white">Angular</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">React</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Vue</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Laravel</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="#!" class="text-white">Pricing</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Settings</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Orders</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              info@example.com
+            </p>
+            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2021 Copyright:
+      <a class="text-reset fw-bold" href="#"> Yecid Leyes || Software Development 🎯 </a>
+    </div>
+    <!-- Copyright -->
   </footer>
   <!-- Footer -->
 
