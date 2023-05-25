@@ -20,15 +20,19 @@
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	
-	<!---- Alertas con estilo --->
+	<!--Sweet Alert 2-->
 	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
 	
 	<!---- Iconos de los botones bonito --->
 	<script src="https://kit.fontawesome.com/dcb1bbced2.js" crossorigin="anonymous"></script>
 
   <!--Iconos de Redes Sociales-->
 	<link rel="stylesheet" href="https://kit.fontawesome.com/dcb1bbced2.css" crossorigin="anonymous">
+
+  <!--Script del Modal Editar -->
+  <script src="../js/modal_editar.js"></script>
 	
 	</head>
 <body>
@@ -102,13 +106,13 @@
 
           <!--Boton Editar-->
           <td>
-            <button type="button" class="btn btn-success editbtn" data-bg-toogle="modal" data-bg-target="#editar"><i class="fa-solid fa-file-pen"></i>
+            <button type="button" class="btn btn-success editbtn" data-bs-toggle="modal" data-bs-target="#editar"><i class="fa-solid fa-file-pen"></i>
             </button>
           </td>
 
           <!--Boton Eliminar-->
           <td>
-            <button type="button" class="btn btn-danger deletebtn" data-bg-toogle="modal" data-bg-target="#eliminar"><i class="fa-solid fa-trash-can"></i>
+            <button type="button" class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="fa-solid fa-trash-can"></i>
             </button>
           </td>
 
@@ -118,10 +122,120 @@
         ?>
       </tbody>	
 		</table>
-	
-	
 	</div>
   <br><br>
+
+  <!--Modal para Editar-->
+  <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 80rem;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Actualización de Datos</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            <input type="hidden" name="id" id="update_id">
+            <div class="container text-center">
+              <div class="row">
+                <div class="col-6">
+
+                  <div class="form-group">
+                    <label for="">Fecha Ingreso</label>
+                    <input type="datetime-local" name="fecha" id="fecha" class="form-control">
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="">Tipo Documento</label>
+                    <select name="tipodoc" id="tipodoc" class="form-control">
+                      <option>---Seleccione---</option>
+                      <option>Tarjeta Identidad</option>
+                      <option>Cedula Ciudadania</option>
+                      <option>Cedula Extrangeria</option>
+                    </select>
+                  </div>  
+          
+                  <div class="form-group">
+                    <label>Numero Documento</label>
+                    <input type="varchar" name="documento" id="documento" class="form-control">
+                  </div>
+          
+                  <div class="form-group">
+                    <label>Nombre Usuario</label>
+                    <input type="text" name="nombres" id="nombres"  class="form-control">
+                  </div>
+          
+                  <div class="form-group">
+                    <label>Apellidos Usuario</label>
+                    <input type="text" name="apellidos" id="apellidos"  class="form-control">
+                  </div>
+          
+                </div>	
+          
+                <div class="col-6">
+          
+                  <div class="form-group">
+                    <label>Edad</label>
+                    <input type="number" name="edad" id="edad" class="form-control" >
+                  </div>
+
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="correo" id="correo"  class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Telefono Usuario</label>
+                    <input type="number" name="telefono" id="telefono" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Id Materia</label>
+                    <select name="idmateria"  id="idmateria" class="form-control">
+                      <option>---Seleccione---</option>
+                      <?php
+                      foreach($usuarios as $filtro){
+                        ?>
+                        <option><?php echo $filtro['Id_Materia']?> --- <?php echo $filtro['Nombre_Materia']?></option>
+
+                        <?php
+                      }
+                      ?>
+                    </select>
+                  </div>
+        
+                  <div class="form-group">
+                    <label>Nombre Materia</label>
+                    <select name="materia" id="materia" class="form-control">
+                      <option>---Seleccione---</option>
+                        <?php
+                        foreach($usuarios as $filtro){
+                          ?>
+                          <option><?php echo $filtro['Nombre_Materia']?></option>
+            
+                          <?php
+                        }
+                        ?>
+                    </select>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-success">Actualizar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Controlador del boton editar-->
+            <?php 
+              include '../controlador/editar.php'
+            ?>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Footer -->
   <footer class="text-center text-white bg-dark">
     <!-- Section: Social media -->
@@ -245,5 +359,8 @@
   </footer>
   <!-- Footer -->
 
+
+
+  
 </body>
 </html>
