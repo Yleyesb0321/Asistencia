@@ -1,39 +1,34 @@
 <?php
-	include '../modelo/conex_editar.php';
+	include_once ('../modelo/conex_editar.php');
 
-	$id = $_POST['id'];
+	$Id_estudiante = $_POST['Id_estudiante'];
 	$Fecha_ingreso = $_POST['fecha'];
-  $Tipo_documento = $_POST['tipodoc'];
-  $Documento = $_POST['documento'];
-  $Nombres = $_POST['nombres'];
-  $Apellidos = $_POST['apellidos'];
-  $Edad = $_POST['edad'];
-  $Correo = $_POST['correo'];
-  $Telefono = $_POST['telefono'];
-  $Id_Materia  = $_POST['idmateria'];
-  $Nombre_Materia = $_POST['materia'];
+	$Tipo_documento = $_POST['tipodoc'];
+	$Documento = $_POST['documento'];
+	$Nombres = $_POST['nombres'];
+	$Apellidos = $_POST['apellidos'];
+	$Edad = $_POST['edad'];
+	$Correo = $_POST['correo'];
+	$Telefono = $_POST['telefono'];
+	$Id_Materia = $_POST['idmateria'];
+	$Nombre_Materia = $_POST['materia'];
 	
 
-	$sentencia = $bd->prepare("UPDATE estudiantes SET Fecha_ingreso= ?, Tipo_documento= ?, Documento= ?, Nombres= ?, Apellidos= ?, Edad= ?, Correo= ?, Telefono= ?, Id_Materia= ?, Nombre_Materia= ? WHERE Id= ?;");
+	$sentencia = $bd->prepare("UPDATE estudiantes SET Fecha_ingreso= ?, Tipo_documento= ?, Documento= ?, Nombres= ?, Apellidos= ?, Edad= ?, Correo= ?, Telefono= ?, Id_Materia= ?, Nombre_Materia= ? WHERE Id_estudiante= ?; ");
 
 
-	$resultado = $sentencia->execute([$Fecha_ingreso, $Tipo_documento, $Documento, $Nombres, $Apellidos, $Edad, $Correo, $Telefono, $Id_Materia, $Nombre_Materia, $id]);
+	$resultado = $sentencia->execute([$Fecha_ingreso, $Tipo_documento, $Documento, $Nombres, $Apellidos, $Edad, $Correo, $Telefono, $Id_Materia, $Nombre_Materia, $Id_estudiante]);
+
+	
 
 	if($resultado){
 		echo "<script>
-		Swal.fire({
-			position: 'top-end',
-			icon: 'success',
-			title: 'Actualización Exitosa',
-			showConfirmButton: false,
-			timer: 1500
-		})
-		location.href = '../vista/listado.php';</script>";
+			location.href = '../vista/listados.php';
+		</script>";
 	}
-	else{
-		return "Error";
+	else {
+		return 'Error';
+		
 	}
-
-
 
 ?>

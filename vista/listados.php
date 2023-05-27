@@ -1,8 +1,8 @@
 <?php
   include_once '../modelo/filtrar.php';
+
   $objeto = new Conexion();
   $conexion = $objeto->Conectar();
-
 
   $consulta = "SELECT * FROM estudiantes";
   $resultado = $conexion->prepare($consulta);
@@ -10,31 +10,36 @@
   $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
+
 <!Doctype html>
 <html lang="es">
 <head>
 	<title>Formulario Asistencia</title>
 	<link rel="shortcut icon" href="../img/logo.png">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
 	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	
 	<!--Sweet Alert 2-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  
+  
 
 	
-	<!---- Iconos de los botones bonito --->
+	<!--Iconos de Redes Sociales-->
 	<script src="https://kit.fontawesome.com/dcb1bbced2.js" crossorigin="anonymous"></script>
-
-  <!--Iconos de Redes Sociales-->
 	<link rel="stylesheet" href="https://kit.fontawesome.com/dcb1bbced2.css" crossorigin="anonymous">
-
-  <!--Script del Modal Editar -->
-  <script src="../js/modal_editar.js"></script>
 	
 	</head>
+
 <body>
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
@@ -89,36 +94,38 @@
       <tbody>
       <!-- Logica para filtrar datos de la tabla estudiante	-->
         <?php
-        foreach($usuarios as $filtro){
-        ?>
-        <tr>
-          <td><?php echo $filtro['Id_estudiante']?></td>
-          <td><?php echo $filtro['Fecha_ingreso']?></td>
-          <td><?php echo $filtro['Tipo_documento']?></td>
-          <td><?php echo $filtro['Documento']?></td>
-          <td><?php echo $filtro['Nombres']?></td>
-          <td><?php echo $filtro['Apellidos']?></td>
-          <td><?php echo $filtro['Edad']?></td>
-          <td><?php echo $filtro['Correo']?></td>
-          <td><?php echo $filtro['Telefono']?></td>
-          <td><?php echo $filtro['Id_Materia']?></td>
-          <td><?php echo $filtro['Nombre_Materia']?></td>
+          foreach($usuarios as $filtro){
+            ?>
+            <tr>
+              <td><?php echo $filtro['Id_estudiante']?></td>
+              <td><?php echo $filtro['Fecha_ingreso']?></td>
+              <td><?php echo $filtro['Tipo_documento']?></td>
+              <td><?php echo $filtro['Documento']?></td>
+              <td><?php echo $filtro['Nombres']?></td>
+              <td><?php echo $filtro['Apellidos']?></td>
+              <td><?php echo $filtro['Edad']?></td>
+              <td><?php echo $filtro['Correo']?></td>
+              <td><?php echo $filtro['Telefono']?></td>
+              <td><?php echo $filtro['Id_Materia']?></td>
+              <td><?php echo $filtro['Nombre_Materia']?></td>
 
-          <!--Boton Editar-->
-          <td>
-            <button type="button" class="btn btn-success editbtn" data-bs-toggle="modal" data-bs-target="#editar"><i class="fa-solid fa-file-pen"></i>
-            </button>
-          </td>
+              <!--Boton Editar-->
+              <td>
+                <button type="button" class="btn btn-success editbtn" data-bs-toggle="modal" data-bs-target="#editar">
+                  <i class="fa-solid fa-file-pen"></i>
+                </button>
+              </td>
 
-          <!--Boton Eliminar-->
-          <td>
-            <button type="button" class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="fa-solid fa-trash-can"></i>
-            </button>
-          </td>
+              <!--Boton Eliminar-->
+              <td>
+                <button type="button" class="btn btn-danger deletebtn" data-bs-toggle="modal" data-bs-target="#eliminar">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </td>
 
-        </tr>
-        <?php
-        }
+            </tr>
+            <?php
+          }
         ?>
       </tbody>	
 		</table>
@@ -127,15 +134,15 @@
 
   <!--Modal para Editar-->
   <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width: 80rem;">
+    <div class="modal-dialog" style="width: 80rem;" >
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Actualización de Datos</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="" method="post">
-            <input type="hidden" name="id" id="update_id">
+          <form action="../controlador/editar.php" method="post">
+            <input type="hidden" name="Id_estudiante" id="update_id">
             <div class="container text-center">
               <div class="row">
                 <div class="col-6">
@@ -192,45 +199,41 @@
                   <div class="form-group">
                     <label>Id Materia</label>
                     <select name="idmateria"  id="idmateria" class="form-control">
-                      <option>---Seleccione---</option>
-                      <?php
-                      foreach($usuarios as $filtro){
-                        ?>
-                        <option><?php echo $filtro['Id_Materia']?> --- <?php echo $filtro['Nombre_Materia']?></option>
-
+                      <option>--Seleccione--</option>
                         <?php
-                      }
-                      ?>
+                        foreach($usuarios as $filtro){
+                          ?>
+                          <option><?php echo $filtro['Id_Materia']?> -- <?php echo $filtro['Nombre_Materia']?></option>
+
+                          <?php
+                        }
+                        ?>
                     </select>
                   </div>
         
                   <div class="form-group">
                     <label>Nombre Materia</label>
                     <select name="materia" id="materia" class="form-control">
-                      <option>---Seleccione---</option>
+                      <option>--Seleccione--</option>
                         <?php
-                        foreach($usuarios as $filtro){
-                          ?>
-                          <option><?php echo $filtro['Nombre_Materia']?></option>
-            
-                          <?php
-                        }
+                          foreach($usuarios as $filtro){
+                            ?>
+                            <option><?php echo $filtro['Nombre_Materia']?></option>
+              
+                            <?php
+                          }
                         ?>
                     </select>
                   </div>
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-outline-success">Actualizar</button>
+                    <button type="submit" class="btn btn-outline-success">Actualizar</button>
                   </div>
                 </div>
               </div>
             </div>
-
-            <!--Controlador del boton editar-->
-            <?php 
-              include '../controlador/editar.php'
-            ?>
+            
           </form>
         </div>
       </div>
@@ -360,6 +363,9 @@
   <!-- Footer -->
 
 
+  <!--Script del Modal Editar -->
+  <script src="../js/modal_editar.js"></script>
+  <script src='../js/actualizar.js'></script>
 
   
 </body>
